@@ -4,10 +4,10 @@
 
 /**
 * struct list_s - Node of a singly linked list
- * @str: String data associated with the node
- * @val: Value string data associated with the node
+ * @stri_ng: String data associated with the node
+ * @val_u: Value string data associated with the node
  * @len: Length of the string data
- * @valLen: Length of the value string data
+ * @val_len: Length of the value string data
  * @next: Pointer to the next node in the list
  *
  * Description: This structure defines a node in a singly linked list
@@ -16,10 +16,10 @@
 
 typedef struct list_s
 {
-	char *string;
-	char *val;
+	char *stri_ng;
+	char *val_u;
 	unsigned int len;
-	unsigned int valLen;
+	unsigned int val_len;
 	struct list_s *next;
 } list_t;
 
@@ -29,11 +29,11 @@ size_t print_list(list_t *h);
 
 size_t list_len(list_t *h);
 
-list_t *add_node(list_t **head, char *string, char *val);
+list_t *add_node(list_t **head, char *stri_ng, char *val_u);
 
 void free_list(list_t *head);
 
-list_t *get_node(list_t *head, char *string);
+list_t *get_node(list_t *head, char *stri_ng);
 
 
 #endif

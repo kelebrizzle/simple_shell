@@ -8,13 +8,13 @@
 /**
  * struct param_s - Structure to hold essential shell variables
  * @argv: Command line arguments from main function
- * @buffer: Input buffer to store user input
+ * @buff: Input buffer to store user input
  * @args: Array of arguments extracted from the input
  * @nextCommand: Pointer to the next command for processing
- * @argsCap: Capacity of the args array
- * @lineCount: Total lines of input processed
+ * @args_cap: Capacity of the args array
+ * @line_count: Total lines of input processed
  * @tokCount: Number of tokens in the current input line
- * @status: Return status of the most recent command
+ * @stat: Return status of the most recent command
  * @env_head: Singly linked list of environment variables
  * @alias_head: Singly linked list of aliases
  *
@@ -25,13 +25,13 @@
 typedef struct param_s
 {
     char **argv;
-    char *buffer;
+    char *buff;
     char **args;
     char *nextCommand;
-    unsigned int argsCap;
-    unsigned int lineCount;
+    unsigned int args_cap;
+    unsigned int line_count;
     unsigned int tokCount;
-    int status;
+    int stat;
     list_t *env_head;
     list_t *alias_head;
 } param_t;
