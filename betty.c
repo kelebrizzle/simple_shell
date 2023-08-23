@@ -12,6 +12,5 @@ int main(void)
 	{
 		printf("Pass Betty\n");
 	}
-
 	return (0);
 }
