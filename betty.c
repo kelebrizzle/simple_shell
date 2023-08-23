@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include "main.h"
 /**
  * main - Code to pass betty
  *
- * Return:  always 0
+ * Return:  always (0)
  */
 int main(void)
 {
