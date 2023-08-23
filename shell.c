@@ -34,7 +34,7 @@ void set_data(list_shell *datash, char **av)
 	datash->input = NULL;
 	datash->args = NULL;
 	datash->status = 0;
-	datash->counter = 1;
+	datash->count = 1;
 
 	for (n = 0; env[n]; n++)
 		;
