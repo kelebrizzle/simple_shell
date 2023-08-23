@@ -1,8 +1,8 @@
 #include <stdio.h>
 /**
- * Main - Code to pass betty
+ * main - Code to pass betty
  *
- * Return - always 0
+ * Return:  always 0
  */
 int main(void)
 {
@@ -13,5 +13,5 @@ int main(void)
 		printf("Pass Betty\n");
 	}
 
-	return 0;
+	return (0);
 }
