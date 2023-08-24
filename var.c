@@ -13,7 +13,7 @@ void check_environ(r_variable **h, char *in, list_shell *data)
 	int row, chr, j, lval;
 	char **_envr;
 
-	_envr = data->_environ;
+	_envr = data->_env;
 	for (row = 0; _envr[row]; row++)
 	{
 		for (j = 1, chr = 0; _envr[row][chr]; chr++)
