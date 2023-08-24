@@ -25,9 +25,9 @@ int repeated_char(char *input, int i)
  */
 int error_sep_op(char *input, int i, char last)
 {
-	int count;
+	int counts;
 
-	count = 0;
+	counts = 0;
 	if (*input == '\0')
 		return (0);
 
@@ -45,8 +45,8 @@ int error_sep_op(char *input, int i, char last)
 
 		if (last == '|')
 		{
-			count = repeated_char(input, 0);
-			if (count == 0 || count > 1)
+			counts = repeated_char(input, 0);
+			if (counts == 0 || counts > 1)
 				return (i);
 		}
 	}
@@ -58,8 +58,8 @@ int error_sep_op(char *input, int i, char last)
 
 		if (last == '&')
 		{
-			count = repeated_char(input, 0);
-			if (count == 0 || count > 1)
+			counts = repeated_char(input, 0);
+			if (counts == 0 || counts > 1)
 				return (i);
 		}
 	}
@@ -102,7 +102,7 @@ int first_char(char *input, int *i)
  */
 void print_syntax_error(list_shell *datash, char *input, int i, int bool)
 {
-	char *msg, *msg2, *msg3, *error, *counter;
+	char *msg, *msg2, *msg3, *error, *counts;
 	int length;
 
 	if (input[i] == ';')
@@ -121,19 +121,19 @@ void print_syntax_error(list_shell *datash, char *input, int i, int bool)
 
 	msg2 = ": Syntax error: \"";
 	msg3 = "\" unexpected\n";
-	counter = aux_itoa(datash->count);
-	length = _strlen(datash->av[0]) + _strlen(count);
+	counts = aux_itoa(datash->count);
+	length = _strlen(datash->av[0]) + _strlen(counts);
 	length += _strlen(msg) + _strlen(msg2) + _strlen(msg3) + 2;
 
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
 	{
-		free(count);
+		free(counts);
 		return;
 	}
 	_strcpy(error, datash->av[0]);
 	_strcat(error, ": ");
-	_strcat(error, count);
+	_strcat(error, counts);
 	_strcat(error, msg2);
 	_strcat(error, msg);
 	_strcat(error, msg3);
@@ -141,7 +141,7 @@ void print_syntax_error(list_shell *datash, char *input, int i, int bool)
 
 	write(STDERR_FILENO, error, length);
 	free(error);
-	free(count);
+	free(counts);
 }
 
 /**
@@ -173,4 +173,3 @@ int check_syntax_error(list_shell *datash, char *input)
 
 	return (0);
 }
-
