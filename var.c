@@ -1,30 +1,31 @@
 #include "shell.h"
 
 /**
- * check_environ - Checks if the typed variable is an environment variable.
+ * check_env - checks if the typed variable is an env variable
  *
- * @h: Head of linked list.
- * @in: Input string.
- * @data: Data structure.
- * Return: No return.
+ * @h: head of linked list
+ * @in: input string
+ * @data: data structure
+ * Return: no return
  */
-void check_environ(r_variable **h, char *in, list_shell *data)
+void check_env(r_variable **h, char *in, list_shell *data)
 {
 	int row, chr, j, lval;
-	char **_envriron;
+	char **_envr;
+
 	_envr = data->_env;
 	for (row = 0; _envr[row]; row++)
 	{
-		for (j = 1, chr = 0; _envriron[row][chr]; chr++)
+		for (j = 1, chr = 0; _envr[row][chr]; chr++)
 		{
-			if (_envriron[row][chr] == '=')
+			if (_envr[row][chr] == '=')
 			{
-				lval = _strlen(_envriron[row] + chr + 1);
-				add_rvar_node(h, j, _envriron[row] + chr + 1, lval);
+				lval = _strlen(_envr[row] + chr + 1);
+				add_rvar_node(h, j, _envr[row] + chr + 1, lval);
 				return;
 			}
 
-			if (in[j] == _envriron[row][chr])
+			if (in[j] == _envr[row][chr])
 				j++;
 			else
 				break;
@@ -41,12 +42,12 @@ void check_environ(r_variable **h, char *in, list_shell *data)
 }
 
 /**
- * check_vars - Check if the typed variable is $$ or $?
+ * check_vars - check if the typed variable is $$ or $?
  *
- * @h: Head of the linked list.
- * @in: Input string.
- * @st: Last status of the Shell.
- * @data: Data structure.
+ * @h: head of the linked list
+ * @in: input string
+ * @st: last status of the Shell
+ * @data: data structure
  * Return: no return
  */
 int check_vars(r_variable **h, char *in, char *st, list_shell *data)
@@ -75,7 +76,7 @@ int check_vars(r_variable **h, char *in, char *st, list_shell *data)
 			else if (in[i + 1] == ';')
 				add_rvar_node(h, 0, NULL, 0);
 			else
-				check_environ(h, in + i, data);
+				check_env(h, in + i, data);
 		}
 	}
 
@@ -83,13 +84,13 @@ int check_vars(r_variable **h, char *in, char *st, list_shell *data)
 }
 
 /**
- * replaced_input - Replaces variables in the input string.
+ * replaced_input - replaces string into variables
  *
- * @head: Head of the linked list.
- * @input: Input string.
- * @new_input: New input string (replaced).
- * @nlen: New length.
- * Return: Replaced string.
+ * @head: head of the linked list
+ * @input: input string
+ * @new_input: new input string (replaced)
+ * @nlen: new length
+ * Return: replaced string
  */
 char *replaced_input(r_variable **head, char *input, char *new_input, int nlen)
 {
@@ -135,11 +136,11 @@ char *replaced_input(r_variable **head, char *input, char *new_input, int nlen)
 }
 
 /**
- * rep_var - Calls functions to replace variables in the input string.
+ * rep_var - calls functions to replace string into vars
  *
- * @input: Input string.
- * @datash: Data structure.
- * Return: Replaced string
+ * @input: input string
+ * @datash: data structure
+ * Return: replaced string
  */
 char *rep_var(char *input, list_shell *datash)
 {
@@ -180,4 +181,3 @@ char *rep_var(char *input, list_shell *datash)
 
 	return (new_input);
 }
-
