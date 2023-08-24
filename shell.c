@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * free_data - Frees memory allocated for the data structure.
+ * free_data - frees data structure
  *
- * @datash: Data structure to be freed.
- * Return: No return value.
+ * @datash: data structure
+ * Return: no return
  */
 void free_data(list_shell *datash)
 {
-	unsigned int n;
+	unsigned int i;
 
-	for (n = 0; datash->_env[n]; n++)
+	for (i = 0; datash->_env[i]; i++)
 	{
-		free(datash->_env[n]);
+		free(datash->_env[i]);
 	}
 
 	free(datash->_env);
@@ -20,15 +20,15 @@ void free_data(list_shell *datash)
 }
 
 /**
- * set_data - Initializes the data structure with default values.
+ * set_data - Initialize data structure
  *
- * @datash: Data structure to be initialized.
- * @av: Argument vector.
- * Return: No return value.
+ * @datash: data structure
+ * @av: argument vector
+ * Return: no return
  */
 void set_data(list_shell *datash, char **av)
 {
-	unsigned int n;
+	unsigned int i;
 
 	datash->av = av;
 	datash->input = NULL;
@@ -36,32 +36,32 @@ void set_data(list_shell *datash, char **av)
 	datash->status = 0;
 	datash->count = 1;
 
-	for (n = 0; env[n]; n++)
+	for (i = 0; env[i]; i++)
 		;
 
-	datash->_env = malloc(sizeof(char *) * (n + 1));
+	datash->_env = malloc(sizeof(char *) * (i + 1));
 
-	for (n = 0; env[n]; n++)
+	for (i = 0; env[i]; i++)
 	{
-		datash->_env[n] = _strdup(env[n]);
+		datash->_env[i] = _strdup(env[i]);
 	}
 
-	datash->_env[n] = NULL;
+	datash->_env[i] = NULL;
 	datash->pid = aux_itoa(getpid());
 }
 
 /**
- * main - Entry point of the shell program.
+ * main - Entry point
  *
- * @ac: Argument count.
- * @av: Argument vector.
+ * @ac: argument count
+ * @av: argument vector
  *
  * Return: 0 on success.
  */
 int main(int ac, char **av)
 {
 	list_shell datash;
-	(void)ac;
+	(void) ac;
 
 	signal(SIGINT, get_sigint);
 	set_data(&datash, av);
@@ -71,4 +71,3 @@ int main(int ac, char **av)
 		return (255);
 	return (datash.status);
 }
-
