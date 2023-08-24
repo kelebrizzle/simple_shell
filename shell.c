@@ -36,14 +36,14 @@ void set_data(list_shell *datash, char **av)
 	datash->status = 0;
 	datash->count = 1;
 
-	for (i = 0; env[i]; i++)
+	for (i = 0; environ[i]; i++)
 		;
 
 	datash->_env = malloc(sizeof(char *) * (i + 1));
 
-	for (i = 0; env[i]; i++)
+	for (i = 0; environ[i]; i++)
 	{
-		datash->_env[i] = _strdup(env[i]);
+		datash->_env[i] = _strdup(environ[i]);
 	}
 
 	datash->_env[i] = NULL;

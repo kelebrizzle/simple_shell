@@ -17,7 +17,7 @@
 #define TOK_DELIM " \t\r\n\a"
 
 /* Points to an array of pointers to strings called the "environment" */
-extern char **env;
+extern char **environ;
 
 
 /**
@@ -229,5 +229,10 @@ void aux_help_cd(void);
 
 /* get_help.c */
 int get_help(list_shell *datash);
+
+/* shell.c */
+void free_data(list_shell *datash);
+void set_data(list_shell *datash, char **av);
+int main(int ac, char **av);
 
 #endif
